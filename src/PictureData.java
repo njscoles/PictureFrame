@@ -32,4 +32,8 @@ public class PictureData {
 		setDate(date);
 		setDescription(description);
 	}
+	//@Override
+	//public String toString() {
+		//return String.format(, args)
+	//}
 }
