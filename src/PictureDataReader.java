@@ -26,7 +26,7 @@ public class PictureDataReader {
 			System.out.println("File could not be found");
 		}
 		
-		System.out.println(pictureData);
+		//System.out.println(pictureData); //Testing
 		return pictureData;
 	}
 }
