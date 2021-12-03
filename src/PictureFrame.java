@@ -56,7 +56,7 @@ public class PictureFrame extends JFrame {
 	}
 	
 	public PictureFrame() {
-		setupPictureFrame();
+		setupGUI();
 	}
 	public static void main(String[] args) {
 		String file = "descriptions.txt";
