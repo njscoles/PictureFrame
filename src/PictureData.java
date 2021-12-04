@@ -26,7 +26,7 @@ public class PictureData {
 		this.description = description;
 	}
 	
-	// Constructorr
+	// Constructor
 	public PictureData(String filename, String date, String description) {
 		setFilename(filename);
 		setDate(date);

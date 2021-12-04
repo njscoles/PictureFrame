@@ -1,6 +1,7 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -8,8 +9,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 public class PictureFrame extends JFrame {
-	
+	private PicturePanel panCenter;
 	public void setupPictureFrame() {
+		
+		// Adds buttons/options to top of Frame
 		JMenuBar mbar = new JMenuBar();
 		JMenu mnuFile = new JMenu("File");
 		JMenu mnuHelp = new JMenu("Help");
@@ -22,7 +25,7 @@ public class PictureFrame extends JFrame {
 		mnuFile.add(miSave);
 		miSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Hello!");
+				// System.out.println("Hello!"); //Testing functionality
 			}
 		});
 		// Exit button frame
@@ -33,7 +36,6 @@ public class PictureFrame extends JFrame {
 						System.exit(0);
 					}
 				});
-		
 		// About button
 		JMenuItem miAbout = new JMenuItem("About");
 		miAbout.addActionListener(
@@ -48,15 +50,21 @@ public class PictureFrame extends JFrame {
 		setJMenuBar(mbar);
 	}
 	
+	
 	public void setupGUI() {
 		setTitle("Picture Frame");
 		setSize(290, 400);
+		Container c = getContentPane();
+	    c.setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setupPictureFrame();
+		PicturePanel panCenter = new PicturePanel();
+		c.add(panCenter,BorderLayout.CENTER);
 	}
 	
 	public PictureFrame() {
 		setupGUI();
+		
 	}
 	public static void main(String[] args) {
 		String file = "descriptions.txt";
