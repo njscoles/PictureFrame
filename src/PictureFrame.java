@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Container;
+import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,7 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PictureFrame extends JFrame {
-	 private JTextField descriptionField;
+	private JTextField descriptionField;
+	private JTextField dateField;
 	private PicturePanel panCenter;
 	public void setupPictureFrame() {
 		
@@ -67,17 +69,24 @@ public class PictureFrame extends JFrame {
 		PicturePanel panNorth = new PicturePanel(); // Picture Panel occupies northern area
 		c.add(panNorth,BorderLayout.NORTH);
 		JPanel panCenter = new JPanel();
-		JLabel dateField = new JLabel("Date goes here");
-		descriptionField = new JTextField(2);
+		dateField = new JTextField("Date"); // needs date variable
+		descriptionField = new JTextField("Desc"); // needs description variable
 		JButton previousImgBtn = new JButton("Prev");
 		JButton saveInfoBtn = new JButton("Save");
 		JButton nextImgBtn = new JButton("Next");
-		c.add(panCenter,BorderLayout.CENTER); // JPanel occupies central area
-		panCenter.add(dateField);
-		panCenter.add(descriptionField);
-		panCenter.add(previousImgBtn);
-		panCenter.add(saveInfoBtn);
-		panCenter.add(nextImgBtn);
+		
+		
+		// JPanel below actual image
+		JPanel Buttons = new JPanel(new FlowLayout());
+		JPanel p = new JPanel(new BorderLayout());
+		p.add(dateField,BorderLayout.NORTH);
+		p.add(descriptionField,BorderLayout.CENTER);
+		Buttons.add(previousImgBtn, BorderLayout.WEST);
+		Buttons.add(saveInfoBtn,BorderLayout.CENTER);
+		Buttons.add(nextImgBtn);
+		c.add(p,BorderLayout.CENTER); // JPanel occupies central area
+		c.add(Buttons, BorderLayout.SOUTH);
+
 
 	}
 	
