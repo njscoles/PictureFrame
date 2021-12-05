@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import java.awt.Color;
 
 public class PicturePanel extends JPanel implements MouseListener, MouseMotionListener{
+	public static void setPicture() {
+		
+	}
 	private String message;
 	private int msgX, msgY;
 	public PicturePanel() {
-		message = String.format("(X=0, Y=0");
+		message = String.format("(x=0, y=0"); // Initially displays 0,0 as coordinates
 		setPreferredSize(new Dimension(200,200));
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -24,39 +27,36 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
         g.drawString(message,msgX,msgY);
     }
 	 public void mouseClicked(MouseEvent e) { // Displays coordinated when clicked
-	        message = String.format("(X=%d, Y=%d)", e.getX(),e.getY());
+	        message = String.format("(x=%d, y=%d)", e.getX(),e.getY());
 	        msgX = e.getX();
 	        msgY = e.getY();
 	        repaint(); // Changes its position
 	 }
 	    public void mouseMoved(MouseEvent e) {
-	        message = String.format("(X=%d, Y=%d)", e.getX(),e.getY());
+	    	message = String.format("(x=%d, y=%d)", e.getX(),e.getY());
 	        repaint(); // Changes its position
 	    }
 		public void mouseDragged(MouseEvent e) {
-			 message = String.format("(X=%d, Y=%d)", e.getX(),e.getY());	
+			message = String.format("(x=%d, y=%d)", e.getX(),e.getY());	
 			 repaint(); // Changes its position
 		}
 		public void mousePressed(MouseEvent e) {
-	        message = String.format("(X=%d, Y=%d)", e.getX(),e.getY());
+	        message = String.format("(x=%d, y=%d)", e.getX(),e.getY());
 	        msgX = e.getX();
 	        msgY = e.getY();
 	        repaint(); // Changes its position
-			
 		}
 		public void mouseReleased(MouseEvent e) {
-			 message = String.format("(X=%d, Y=%d)", e.getX(),e.getY());
+			 message = String.format("(x=%d, y=%d)", e.getX(),e.getY());
 			 repaint(); // Changes its position
 			
 		}
 		public void mouseEntered(MouseEvent e) {
-			 message = String.format("(X=%d, Y=%d)", e.getX(),e.getY());
-			 repaint(); // Changes its position
-			
+			 message = String.format("(x=%d, y=%d)", e.getX(),e.getY());
+			 repaint(); // Changes its position	
 		}
-
 		public void mouseExited(MouseEvent e) {
-			 message = String.format("(X=%d, Y=%d)", e.getX(),e.getY());
+			 message = String.format("(x=%d, y=%d)", e.getX(),e.getY());
 			 repaint(); // Changes its position
 			
 		}

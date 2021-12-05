@@ -7,6 +7,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class PictureFrame extends JFrame {
 	private PicturePanel panCenter;
@@ -58,8 +59,10 @@ public class PictureFrame extends JFrame {
 	    c.setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setupPictureFrame();
-		PicturePanel panCenter = new PicturePanel();
-		c.add(panCenter,BorderLayout.CENTER);
+		PicturePanel panNorth = new PicturePanel(); // Picture Panel occupies northern area
+		c.add(panNorth,BorderLayout.NORTH);
+		JPanel panCenter = new JPanel();
+		c.add(panCenter,BorderLayout.CENTER); // JPanel occupies central area
 	}
 	
 	public PictureFrame() {
