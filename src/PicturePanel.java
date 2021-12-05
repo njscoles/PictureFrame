@@ -2,12 +2,14 @@ import javax.swing.JPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.awt.Color;
 
 public class PicturePanel extends JPanel implements MouseListener, MouseMotionListener{
+	private BufferedImage picture = null;
 	public static void setPicture() {
 		
 	}

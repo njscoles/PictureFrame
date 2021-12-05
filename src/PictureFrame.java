@@ -59,7 +59,6 @@ public class PictureFrame extends JFrame {
 		setJMenuBar(mbar);
 	}
 	
-	
 	public void setupGUI() {
 		setTitle("Picture Frame");
 		setSize(290, 400);
@@ -76,7 +75,6 @@ public class PictureFrame extends JFrame {
 		JButton saveInfoBtn = new JButton("Save");
 		JButton nextImgBtn = new JButton("Next");
 		
-		
 		// JPanel below the actual image
 		JPanel Buttons = new JPanel(new FlowLayout());
 		JPanel p = new JPanel(new BorderLayout());
@@ -87,8 +85,6 @@ public class PictureFrame extends JFrame {
 		Buttons.add(nextImgBtn);
 		c.add(p,BorderLayout.CENTER); // JPanel occupies central area
 		c.add(Buttons, BorderLayout.SOUTH);
-
-
 	}
 	
 	public PictureFrame() {
