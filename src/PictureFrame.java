@@ -12,10 +12,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PictureFrame extends JFrame {
-	private JTextField descriptionField;
+	private JTextArea descriptionField;
 	private JTextField dateField;
 	private PicturePanel panCenter;
 	public void setupPictureFrame() {
@@ -70,13 +71,13 @@ public class PictureFrame extends JFrame {
 		c.add(panNorth,BorderLayout.NORTH);
 		JPanel panCenter = new JPanel();
 		dateField = new JTextField("Date"); // needs date variable
-		descriptionField = new JTextField("Desc"); // needs description variable
+		descriptionField = new JTextArea("Desc"); // needs description variable
 		JButton previousImgBtn = new JButton("Prev");
 		JButton saveInfoBtn = new JButton("Save");
 		JButton nextImgBtn = new JButton("Next");
 		
 		
-		// JPanel below actual image
+		// JPanel below the actual image
 		JPanel Buttons = new JPanel(new FlowLayout());
 		JPanel p = new JPanel(new BorderLayout());
 		p.add(dateField,BorderLayout.NORTH);
