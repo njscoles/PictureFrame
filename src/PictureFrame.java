@@ -66,7 +66,8 @@ public class PictureFrame extends JFrame {
 	    c.setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setupPictureFrame();
-		PicturePanel panNorth = new PicturePanel(); // Picture Panel occupies northern area
+		PicturePanel panNorth = new PicturePanel(null); // Picture Panel occupies northern area
+		
 		c.add(panNorth,BorderLayout.NORTH);
 		JPanel panCenter = new JPanel();
 		dateField = new JTextField("Date"); // needs date variable

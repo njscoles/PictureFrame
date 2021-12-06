@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class PictureDataReader {
 	private static String filename, date, description;
-	public static ArrayList<PictureData> readPictureDataFromFile(String file) {
-		ArrayList<PictureData> pictureData = new ArrayList<PictureData>();
+	private static ArrayList<PictureData> pictureData = new ArrayList<PictureData>();
+	public static ArrayList<PictureData> readPictureDataFromFile(String filename) {
 		try {
-			Scanner fsc = new Scanner(new File(file));
+			Scanner fsc = new Scanner(new File(filename));
 			String line;
 			String[] lineSplit;
 			int count = 1;

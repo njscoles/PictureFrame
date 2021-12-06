@@ -9,19 +9,19 @@ import java.util.ArrayList;
 import java.awt.Color;
 
 public class PicturePanel extends JPanel implements MouseListener, MouseMotionListener{
-	private BufferedImage picture = null;
-	public static void setPicture() {
-		
-	}
+	private BufferedImage picture;
 	private String message;
 	private int msgX, msgY;
-	public PicturePanel() {
+	public PicturePanel (BufferedImage picture) {
 		message = String.format("(x=0, y=0"); // Initially displays 0,0 as coordinates
 		setPreferredSize(new Dimension(200,200));
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		msgX = 10;
 		msgY = 10;
+	    picture = (this.picture);
+	    System.out.println(picture);
+	    repaint();
 	}
     @Override
     public void paintComponent(Graphics g) {
