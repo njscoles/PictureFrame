@@ -17,10 +17,8 @@ public class PictureLoader extends PictureData {
 		
 		for (PictureData objects : pictureData) {
 			picture = objects.getFilename();
-			//System.out.println("Picture: " + picture); // Prints file name
 			BufferedImage img = ImageIO.read(new File(picture));
 			bufferedImage.add(img);
-			//System.out.println(bufferedImage); //Testing
 		}
 		return bufferedImage;
 	}

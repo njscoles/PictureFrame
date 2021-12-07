@@ -22,12 +22,10 @@ public class PictureDataReader {
 				pictureData.add(new PictureData(filename, description, date));
 				//System.out.println(filename); //Testing
 			}
-			
-			
+				
 		} catch (Exception ex) {
-			//System.out.println("File could not be found");
+			System.out.println("File could not be found");
 		}
-		
 		//System.out.println(pictureData); //Testing
 		return pictureData;
 	}
