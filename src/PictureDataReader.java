@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PictureDataReader {
-	private static String filename = "descriptions.txt", date, description;
+	private static String filename, date, description;
+	protected static String file = "descriptions.txt";
 	private static ArrayList<PictureData> pictureData = new ArrayList<PictureData>();
-	public static ArrayList<PictureData> readPictureDataFromFile(String filename) {
+	public static ArrayList<PictureData> readPictureDataFromFile(String file) {
 		try {
-			Scanner fsc = new Scanner(new File(filename));
+			Scanner fsc = new Scanner(new File(file));
 			String line;
 			String[] lineSplit;
 			int count = 1;
@@ -18,7 +19,8 @@ public class PictureDataReader {
 				filename = lineSplit[0];
 				date = lineSplit[1];
 				description = lineSplit[2];
-				pictureData.add(new PictureData(filename, date, description));
+				pictureData.add(new PictureData(filename, description, date));
+				//System.out.println(filename); //Testing
 			}
 			
 			

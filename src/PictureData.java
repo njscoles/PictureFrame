@@ -32,8 +32,16 @@ public class PictureData {
 		setDate(date);
 		setDescription(description);
 	}
-	//@Override
-	//public String toString() {
-		//return String.format(, args)
-	//}
+	@Override
+	public String toString() {
+		return String.format("%s, %s, %s, filename, date, description");
+	}
+	public String get(String filename2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public static void PictureData(String filename2, String description2, String date2) {
+		// TODO Auto-generated method stub
+		
+	}
 }

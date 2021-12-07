@@ -96,10 +96,12 @@ public class PictureFrame extends JFrame {
 		
 	}
 	public static void main(String[] args) throws IOException {
-		String filename = "descriptions.txt";
-		ArrayList<PictureData> pictureData = PictureDataReader.readPictureDataFromFile(filename);
-		ArrayList<BufferedImage> bufferedImage = PictureLoader.loadImagesFromPictureData(pictureData, filename);
-		PictureDataReader.readPictureDataFromFile(filename);
+		String file = "descriptions.txt";
+		String filename = null, description = null, date = null;
+		PictureData.PictureData(filename, description, date);
+		ArrayList<PictureData> pictureData = PictureDataReader.readPictureDataFromFile(file);
+		ArrayList<BufferedImage> bufferedImage = PictureLoader.loadImagesFromPictureData(pictureData);
+		PictureDataReader.readPictureDataFromFile(file);
 		//PictureLoader.loadImagesFromPictureData();
 		PictureFrame mmf = new PictureFrame();
 		mmf.setVisible(true);
