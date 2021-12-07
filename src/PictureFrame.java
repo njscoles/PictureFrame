@@ -1,6 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.Container;
 import java.awt.FlowLayout;
 
@@ -92,9 +95,12 @@ public class PictureFrame extends JFrame {
 		setupGUI();
 		
 	}
-	public static void main(String[] args) {
-		String file = "descriptions.txt";
-		PictureDataReader.readPictureDataFromFile(file);
+	public static void main(String[] args) throws IOException {
+		String filename = "descriptions.txt";
+		ArrayList<PictureData> pictureData = PictureDataReader.readPictureDataFromFile(filename);
+		ArrayList<BufferedImage> bufferedImage = PictureLoader.loadImagesFromPictureData(pictureData, filename);
+		PictureDataReader.readPictureDataFromFile(filename);
+		//PictureLoader.loadImagesFromPictureData();
 		PictureFrame mmf = new PictureFrame();
 		mmf.setVisible(true);
 

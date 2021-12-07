@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.awt.Color;
+import java.awt.Color; 
 
 public class PicturePanel extends JPanel implements MouseListener, MouseMotionListener{
 	private BufferedImage picture;
@@ -20,7 +20,7 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 		msgX = 10;
 		msgY = 10;
 	    picture = (this.picture);
-	    System.out.println(picture);
+	    //System.out.println(picture);
 	    repaint();
 	}
     @Override

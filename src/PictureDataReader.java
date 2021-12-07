@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PictureDataReader {
-	private static String filename, date, description;
+	private static String filename = "descriptions.txt", date, description;
 	private static ArrayList<PictureData> pictureData = new ArrayList<PictureData>();
 	public static ArrayList<PictureData> readPictureDataFromFile(String filename) {
 		try {
@@ -23,7 +23,7 @@ public class PictureDataReader {
 			
 			
 		} catch (Exception ex) {
-			System.out.println("File could not be found");
+			//System.out.println("File could not be found");
 		}
 		
 		//System.out.println(pictureData); //Testing
