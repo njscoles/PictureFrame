@@ -16,7 +16,7 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 	int currentIndex = 1;
 	
 	public PicturePanel () { 
-		message = String.format("(x=0, y=0"); // Initially displays 0,0 as coordinates
+		message = String.format("(x=0, y=0)"); // Initially displays 0,0 as coordinates
 		setPreferredSize(new Dimension(200,200));
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -24,19 +24,26 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 		msgY = 10;
 	    repaint();
 	}
+	 @Override
+	    public void paintComponent(Graphics g) {
+	        super.paintComponent(g); // background and boundaries
+	        g.drawImage(picture,0,0,null);
+	        g.drawString(message,msgX,msgY);
+	    }
 	public void setPicture(BufferedImage bufferedImage) {
 		picture = bufferedImage;
+		message = String.format("(x=0, y=0)"); // Initially displays 0,0 as coordinates
+		setPreferredSize(new Dimension(200,200));
+		addMouseListener(this);
+		addMouseMotionListener(this);
+		msgX = 10;
+		msgY = 10;
 		repaint();
+		
 	}
 	public BufferedImage getPicture() {
 		return picture;
 	}
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g); // background and boundaries
-        g.drawString(message,msgX,msgY);
-        g.drawImage(picture,0,0,null);
-    }
 	 public void mouseClicked(MouseEvent e) { // Displays coordinated when clicked
 	        message = String.format("(x=%d, y=%d)", e.getX(),e.getY());
 	        msgX = e.getX();

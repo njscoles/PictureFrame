@@ -23,6 +23,8 @@ public class PictureFrame extends JFrame {
 	private JTextField dateField;
 	private PicturePanel panCenter;
 	private int currentPosition;
+	private String message;
+	private int msgX, msgY;
 	
 	private ArrayList<BufferedImage> bufferedImages;
 	private ArrayList<PictureData> pictureData;
@@ -31,9 +33,11 @@ public class PictureFrame extends JFrame {
 		bufferedImages = new ArrayList<BufferedImage>();
 		pictureData = new ArrayList<PictureData>();
 		currentPosition = 0;
+		
 	   //setupGUI();
 	}
 	public PictureFrame(ArrayList<BufferedImage>imageList, ArrayList<PictureData>dataList){
+		
 		bufferedImages = imageList;
 		pictureData = dataList;
 		currentPosition = 0;
@@ -135,6 +139,13 @@ public class PictureFrame extends JFrame {
 						panNorth.setPicture(bufferedImages.get(currentPosition));
 						dateField.setText(pictureData.get(currentPosition).getDate());
 						descriptionField.setText(pictureData.get(currentPosition).getDescription());
+					}
+		});
+		saveInfoBtn.addActionListener(
+				new ActionListener() {
+					public void actionPerformed (ActionEvent e) {
+						//System.out.println("Save button"); // Testing functionality
+						
 					}
 		});
 		dateField.setText(pictureData.get(currentPosition).getDate());
