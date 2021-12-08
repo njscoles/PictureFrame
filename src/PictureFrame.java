@@ -22,7 +22,8 @@ public class PictureFrame extends JFrame {
 	private JTextField dateField;
 	private PicturePanel panCenter;
 	protected int currentPosition;
-	private String message, newDate, newDesc;
+	static String newDate, newDesc;
+	//String newDesc;
 	private int msgX, msgY;
 	
 	private ArrayList<BufferedImage> bufferedImages;
