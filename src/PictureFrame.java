@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Container;
 import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +21,7 @@ public class PictureFrame extends JFrame {
 	private JTextArea descriptionField;
 	private JTextField dateField;
 	private PicturePanel panCenter;
-	private int currentPosition;
+	protected int currentPosition;
 	private String message, newDate, newDesc;
 	private int msgX, msgY;
 	
@@ -149,12 +148,14 @@ public class PictureFrame extends JFrame {
 		saveInfoBtn.addActionListener(
 				new ActionListener() {
 					public void actionPerformed (ActionEvent e) {
+						PictureDataWriter saveToFile = new PictureDataWriter();
 						//System.out.println("Save button"); // Testing functionality
 						newDate = dateField.getText(); // Grabs the new date
 						newDesc = descriptionField.getText(); // Grabs the new description
 
 						pictureData.get(currentPosition).setDate(newDate); 
 						pictureData.get(currentPosition).setDescription(newDesc);
+						PictureDataWriter.saveData();
 						
 					}
 					
