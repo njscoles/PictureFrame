@@ -23,7 +23,7 @@ public class PictureFrame extends JFrame {
 	private JTextField dateField;
 	private PicturePanel panCenter;
 	private int currentPosition;
-	private String message;
+	private String message, newDate, newDesc;
 	private int msgX, msgY;
 	
 	private ArrayList<BufferedImage> bufferedImages;
@@ -145,6 +145,10 @@ public class PictureFrame extends JFrame {
 				new ActionListener() {
 					public void actionPerformed (ActionEvent e) {
 						//System.out.println("Save button"); // Testing functionality
+						newDate = dateField.getText(); // Grabs the new date
+						newDesc = descriptionField.getText(); // Grabs the new description
+						System.out.println("New date: " + newDate);
+						System.out.println("New desc: " + newDesc);
 						
 					}
 		});
