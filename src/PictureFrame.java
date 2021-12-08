@@ -22,6 +22,7 @@ public class PictureFrame extends JFrame {
 	private JTextArea descriptionField;
 	private JTextField dateField;
 	private PicturePanel panCenter;
+	private int currentPosition;
 	
 	private ArrayList<BufferedImage> bufferedImages;
 	private ArrayList<PictureData> pictureData;
@@ -29,15 +30,16 @@ public class PictureFrame extends JFrame {
 	public PictureFrame() {
 		bufferedImages = new ArrayList<BufferedImage>();
 		pictureData = new ArrayList<PictureData>();
-		setupGUI();
+		currentPosition = 0;
+	   //setupGUI();
 	}
 	public PictureFrame(ArrayList<BufferedImage>imageList, ArrayList<PictureData>dataList){
 		bufferedImages = imageList;
 		pictureData = dataList;
+		currentPosition = 0;
 		setupGUI();
 	}
 	public void setupPictureFrame() {
-		
 		// Adds buttons/options to top of Frame
 		JMenuBar mbar = new JMenuBar();
 		JMenu mnuFile = new JMenu("File");
@@ -51,7 +53,7 @@ public class PictureFrame extends JFrame {
 		mnuFile.add(miSave);
 		miSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// System.out.println("Hello!"); //Testing functionality
+				//System.out.println("Hello!"); //Testing functionality
 			}
 		});
 		// Exit button frame
@@ -75,7 +77,6 @@ public class PictureFrame extends JFrame {
 		mnuHelp.add(miAbout);
 		setJMenuBar(mbar);
 	}
-	int currentPosition = 0;
 	public void setupGUI() {
 		setTitle("Picture Frame");
 		setSize(290, 400);
@@ -86,9 +87,9 @@ public class PictureFrame extends JFrame {
 		PicturePanel panNorth = new PicturePanel(); // Picture Panel occupies northern area
 		
 		c.add(panNorth,BorderLayout.NORTH);
-		JPanel panCenter = new JPanel();
-		dateField = new JTextField("Date"); // needs date variable
-		descriptionField = new JTextArea("Desc"); // needs description variable
+		//JPanel panCenter = new JPanel();
+		dateField = new JTextField(); // needs date variable
+		descriptionField = new JTextArea(); // needs description variable
 		JButton previousImgBtn = new JButton("Prev");
 		JButton saveInfoBtn = new JButton("Save");
 		JButton nextImgBtn = new JButton("Next");
@@ -96,75 +97,63 @@ public class PictureFrame extends JFrame {
 		// JPanel below the actual image
 		JPanel Buttons = new JPanel(new FlowLayout());
 		JPanel p = new JPanel(new BorderLayout());
-		p.add(dateField,BorderLayout.NORTH);
-		p.add(descriptionField,BorderLayout.CENTER);
+		p.add(dateField,BorderLayout.CENTER);
+		p.add(descriptionField,BorderLayout.NORTH);
 		Buttons.add(previousImgBtn, BorderLayout.WEST);
 		Buttons.add(saveInfoBtn,BorderLayout.CENTER);
 		Buttons.add(nextImgBtn);
 		c.add(p,BorderLayout.CENTER); // JPanel occupies central area
 		c.add(Buttons, BorderLayout.SOUTH);
-		
+		panNorth.setPicture(bufferedImages.get(currentPosition));
 
-		String filename, date, description;
+		
 		//BufferedImage picture;
-		PicturePanel picture = new PicturePanel();
+		//PicturePanel picture = new PicturePanel();
 		previousImgBtn.addActionListener(
 				new ActionListener() {
-					public void actionPerfomed (ActionEvent e) {
+					public void actionPerformed (ActionEvent e) {
 						if (currentPosition == 0) {
 							currentPosition += 3; // Reverts to the last image if prev is hit on the first image
 						}
 						else {
 							currentPosition -= 1;
 						}
-						picture.setPicture(bufferedImages.get(currentPosition));
+						panNorth.setPicture(bufferedImages.get(currentPosition));
 						dateField.setText(pictureData.get(currentPosition).getDate());
 						descriptionField.setText(pictureData.get(currentPosition).getDescription());
 					}
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
 		});
 		nextImgBtn.addActionListener(
 				new ActionListener() {
-					public void actionPerfomed (ActionEvent e) {
+					public void actionPerformed (ActionEvent e) {
 						if (currentPosition == 3) {
 							currentPosition = 0; // Reverts to the first image if next is hit on the last image
 						}
 						else {
 							currentPosition += 1;
 						}
-						picture.setPicture(bufferedImages.get(currentPosition));
+						panNorth.setPicture(bufferedImages.get(currentPosition));
 						dateField.setText(pictureData.get(currentPosition).getDate());
 						descriptionField.setText(pictureData.get(currentPosition).getDescription());
 					}
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
 		});
+		dateField.setText(pictureData.get(currentPosition).getDate());
+		descriptionField.setText(pictureData.get(currentPosition).getDescription());
+		panNorth.setPicture(bufferedImages.get(currentPosition));
 	}
-	static String filename;
-	static String description;
-	static String date;
+	String filename;
+	String description;
+	String date;
 	public static void main(String[] args) throws IOException {
 		String file = "descriptions.txt";
-		PictureLoader loader = new PictureLoader(file, file, file);
-		PictureDataReader reader = new PictureDataReader();
-		PictureFrame frame = new PictureFrame(loader.loadImagesFromPictureData(reader.readPictureDataFromFile("descriptions.txt")),reader.readPictureDataFromFile("descriptions.txt"));
+		PictureDataReader.readPictureDataFromFile(file);
+		PictureFrame frame = new PictureFrame(PictureLoader.loadImagesFromPictureData(PictureDataReader.readPictureDataFromFile("descriptions.txt")),PictureDataReader.readPictureDataFromFile("descriptions.txt"));
 		//PictureData.PictureData(filename, description, date);
 		//ArrayList<PictureData> pictureData = PictureDataReader.readPictureDataFromFile(file);
 	    //ArrayList<BufferedImage> bufferedImage = PictureLoader.loadImagesFromPictureData(pictureData);
-		PictureDataReader.readPictureDataFromFile(file);
 		//PictureLoader.loadImagesFromPictureData();
-		
-		PictureFrame mmf = new PictureFrame();
-		mmf.setVisible(true);
+
+		frame.setVisible(true);
 
         
       
