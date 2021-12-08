@@ -145,6 +145,7 @@ public class PictureFrame extends JFrame {
 						panNorth.setPicture(bufferedImages.get(currentPosition));
 						dateField.setText(pictureData.get(currentPosition).getDate());
 						descriptionField.setText(pictureData.get(currentPosition).getDescription());
+						return;
 					}
 		});
 		saveInfoBtn.addActionListener(
