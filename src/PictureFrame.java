@@ -18,10 +18,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PictureFrame extends JFrame {
-	private JTextArea descriptionField;
-	private JTextField dateField;
+	public static JTextArea descriptionField;
+	protected static JTextField dateField;
 	private PicturePanel panCenter;
-	protected int currentPosition;
+	static int currentPosition;
 	static String newDate, newDesc;
 	//String newDesc;
 	private int msgX, msgY;
@@ -87,6 +87,7 @@ public class PictureFrame extends JFrame {
 		setJMenuBar(mbar);
 	}
 	public void setupGUI() {
+		currentPosition = 0;
 		setTitle("Picture Frame");
 		setSize(290, 400);
 		Container c = getContentPane();
@@ -157,6 +158,7 @@ public class PictureFrame extends JFrame {
 						pictureData.get(currentPosition).setDate(newDate); 
 						pictureData.get(currentPosition).setDescription(newDesc);
 						PictureDataWriter.saveData();
+						System.out.print(currentPosition);
 						
 					}
 					
@@ -166,8 +168,9 @@ public class PictureFrame extends JFrame {
 		panNorth.setPicture(bufferedImages.get(currentPosition));
 	}
 	String filename;
-	String description;
-	String date;
+	//String description;
+	static String date;
+	static String description;
 	public static void main(String[] args) throws IOException {
 		String file = "descriptions.txt";
 		PictureDataReader.readPictureDataFromFile(file);
