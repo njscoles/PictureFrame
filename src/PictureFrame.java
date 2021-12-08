@@ -57,7 +57,12 @@ public class PictureFrame extends JFrame {
 		mnuFile.add(miSave);
 		miSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("Hello!"); //Testing functionality
+				newDate = dateField.getText(); // Grabs the new date
+				newDesc = descriptionField.getText(); // Grabs the new description
+
+				pictureData.get(currentPosition).setDate(newDate); 
+				pictureData.get(currentPosition).setDescription(newDesc);
+				
 			}
 		});
 		// Exit button frame
@@ -147,10 +152,12 @@ public class PictureFrame extends JFrame {
 						//System.out.println("Save button"); // Testing functionality
 						newDate = dateField.getText(); // Grabs the new date
 						newDesc = descriptionField.getText(); // Grabs the new description
-						System.out.println("New date: " + newDate);
-						System.out.println("New desc: " + newDesc);
+
+						pictureData.get(currentPosition).setDate(newDate); 
+						pictureData.get(currentPosition).setDescription(newDesc);
 						
 					}
+					
 		});
 		dateField.setText(pictureData.get(currentPosition).getDate());
 		descriptionField.setText(pictureData.get(currentPosition).getDescription());
