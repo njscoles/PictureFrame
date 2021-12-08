@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 public class PictureLoader extends PictureData {
-	private static String filename, date, description;
-	public PictureLoader (String filename, String date, String description, String image) {
+	public PictureLoader(String filename, String date, String description) {
 		super(filename, date, description);
+		// TODO Auto-generated constructor stub
 	}
+	private static String filename, date, description;
+	
 	static String picture;
 	private static ArrayList<BufferedImage> bufferedImage = new ArrayList<BufferedImage>();
 	//private static ArrayList<PictureData> pictureData;

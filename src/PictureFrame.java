@@ -22,6 +22,20 @@ public class PictureFrame extends JFrame {
 	private JTextArea descriptionField;
 	private JTextField dateField;
 	private PicturePanel panCenter;
+	
+	private ArrayList<BufferedImage> bufferedImages;
+	private ArrayList<PictureData> pictureData;
+	
+	public PictureFrame() {
+		bufferedImages = new ArrayList<BufferedImage>();
+		pictureData = new ArrayList<PictureData>();
+		setupGUI();
+	}
+	public PictureFrame(ArrayList<BufferedImage>imageList, ArrayList<PictureData>dataList){
+		bufferedImages = imageList;
+		pictureData = dataList;
+		setupGUI();
+	}
 	public void setupPictureFrame() {
 		
 		// Adds buttons/options to top of Frame
@@ -69,7 +83,7 @@ public class PictureFrame extends JFrame {
 	    c.setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setupPictureFrame();
-		PicturePanel panNorth = new PicturePanel(null); // Picture Panel occupies northern area
+		PicturePanel panNorth = new PicturePanel(); // Picture Panel occupies northern area
 		
 		c.add(panNorth,BorderLayout.NORTH);
 		JPanel panCenter = new JPanel();
@@ -89,20 +103,45 @@ public class PictureFrame extends JFrame {
 		Buttons.add(nextImgBtn);
 		c.add(p,BorderLayout.CENTER); // JPanel occupies central area
 		c.add(Buttons, BorderLayout.SOUTH);
+		
+		int currentPosition = 0;
+		String filename, date, description;
+		BufferedImage picture;
+		previousImgBtn.addActionListener(
+				new ActionListener() {
+					public void actionPerfomed (ActionEvent e) {
+						if (currentPosition == 0) {
+							currentPosition = 3; // Reverts to the last image if prev is hit on first image
+						}
+						else {
+							currentPosition -= 1;
+						}
+						picture.setPicture(bufferedImages.get(currentPosition));
+						dateField.setText(pictureData.get(currentPosition).getDate());
+						descriptionField.setText(pictureData.get(currentPosition).getDescription());
+					}
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
-	public PictureFrame() {
-		setupGUI();
-		
-	}
+
 	public static void main(String[] args) throws IOException {
 		String file = "descriptions.txt";
+		PictureLoader loader = new PictureLoader(file, file, file);
+		PictureDataReader reader = new PictureDataReader();
+		PictureFrame frame = new PictureFrame(loader.loadImagesFromPictureData(reader.readPictureDataFromFile("descriptions.txt")),reader.readPictureDataFromFile("descriptions.txt"));
 		String filename = null, description = null, date = null;
 		PictureData.PictureData(filename, description, date);
 		ArrayList<PictureData> pictureData = PictureDataReader.readPictureDataFromFile(file);
 		ArrayList<BufferedImage> bufferedImage = PictureLoader.loadImagesFromPictureData(pictureData);
 		PictureDataReader.readPictureDataFromFile(file);
 		//PictureLoader.loadImagesFromPictureData();
+		
 		PictureFrame mmf = new PictureFrame();
 		mmf.setVisible(true);
 

@@ -3,6 +3,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -13,19 +14,22 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 	private String message;
 	private int msgX, msgY;
 	int currentIndex = 1;
-	ArrayList<BufferedImage> bufferedImage = new ArrayList<BufferedImage>();
-	public PicturePanel (BufferedImage picture) {
+	
+	public PicturePanel () { 
 		message = String.format("(x=0, y=0"); // Initially displays 0,0 as coordinates
 		setPreferredSize(new Dimension(200,200));
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		msgX = 10;
 		msgY = 10;
-		//System.out.println(bufferedImage);
-		//System.out.println(bufferedImage.get(currentIndex));
-		picture = bufferedImage.get(currentIndex);
-	    picture = (this.picture);
 	    repaint();
+	}
+	public void setPicture() {
+		picture = (this.picture);
+		repaint();
+	}
+	public BufferedImage getPicture() {
+		return picture;
 	}
     @Override
     public void paintComponent(Graphics g) {
